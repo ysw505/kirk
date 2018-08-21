@@ -1,6 +1,6 @@
 package Book
 
-type Book struct {
+type Request struct {
 	URL         string `yaml:"url"`
 	Method      string `yaml:"method"`
 	Client      string `yaml:"client"`
