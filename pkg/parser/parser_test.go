@@ -24,3 +24,30 @@ func TestParse(t *testing.T) {
 
 	t.Logf("parse sample , expected %s == result %s", expected, result.URL)
 }
+
+func TestParseHeader(t *testing.T) {
+
+	sample := `url: www.naver.com
+method: GET
+header:
+  a: a
+  b: b
+  `
+	expected := "a"
+
+	parser := NewParser()
+
+	result, err := parser.ParseRequest(sample)
+
+	if err != nil {
+		t.Error(err.Error())
+	}
+
+	t.Log(result)
+
+	if result.Header["a"] != "a" {
+		t.Error("Fail to parse")
+	}
+
+	t.Logf("parse sample , expected %s == result %s", expected, result.Header["a"] )
+}
